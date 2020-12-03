@@ -1,0 +1,105 @@
+body{
+    background:url('imagenes/coffee_laptop.jpg');
+    margin:0px;
+    font-family: 'Trebuchet MS';
+	background-size: 100%;
+}
+
+input[type="submit"]{
+    background-color: #1e721b;
+    color: antiquewhite;
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+input[type="button"]{
+    background-color: #1e721b;
+    color: antiquewhite;
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+input[type="search"]{
+    font-family: 'Trebuchet MS';
+    border-radius: 5px;
+    padding: 5px;
+    width: 200px;
+}
+
+
+input[type="text"]{
+    color: rgb(49, 49, 49);
+    background-color: #E3E3E3;
+    font-family: 'Trebuchet MS';
+    height: 15px;
+    width: 200px;
+    padding: 3px;
+    border-radius: 5px;
+}
+input[type="password"]{
+    color: rgb(49, 49, 49);
+    background-color: #E3E3E3;
+    font-family: 'Trebuchet MS';    
+    height: 15px;
+    padding: 3px;
+    border-radius: 5px
+}
+
+h1, h2, h3, h4, h5, h6, a {
+    margin:0; padding:0px;
+    margin-top: 4px;
+  }
+
+a{
+    text-decoration: none;
+}
+
+  .login {
+    margin:0 auto;
+    margin-top: 100px;
+    max-width:500px;
+    background:#ffffff;
+    border-radius:5px;
+  }
+  .login-header {
+    border:.5px solid #fff;
+    background-color: #39101A;
+    margin-top: 40px;
+    color:rgb(255, 255, 255);
+    text-align:center;
+    border-radius:5px;
+    font-size:110%;
+  }
+
+  .login-form {
+    border:.5px solid #fff;
+    padding: 20px;
+    background:#ffffff;
+    border-radius:5px;
+    /* box-shadow:0px 0px 10px #000; */
+  } 
+
+  .menu-fixed{
+    background-color: rgb(27, 56, 143);
+    /* height: 40px; */
+    text-align:  left;
+    margin: 0px;
+    padding: 5px;
+    font-family: 'Trebuchet MS';
+    border-radius: 5px;
+  }
+
+  .menu-fixed li{
+    display: inline;
+  } 
+  .menu-fixed li a{
+    text-decoration: none;
+    color: white;
+    margin: 10px;
+    padding: 10px;
+    font-family: 'Trebuchet MS';
+  }

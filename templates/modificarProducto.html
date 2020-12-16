@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>PROYECTO MINTIC</title>
+  <!-- Custom Theme files -->
+  <link href="{{url_for('static',filename='style.css')}}" rel="stylesheet" type="text/css" media="all" />
+  <!-- for-mobile-apps -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Flat Login Form Widget Responsive, Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" /> -->
+  <!-- //for-mobile-apps -->
+  <!--Google Fonts-->
+  <!-- <link href='//fonts.googleapis.com/css?family=Signika:400,600' rel='stylesheet' type='text/css'> -->
+  <!--google fonts-->
+</head>
+
+<body>
+
+  <ul class="menu-fixed">
+    <li class="col-2"><a href="/inicio/admin_autorizado">Inicio</a></li>
+    <li class="col-2"><a href="/registrar_producto">Crear Producto</a></li>
+    <li class="col-2"><a href="/modificar_producto">Modificar Productos</a></li>
+    <li class="col-2"><a href="/registrar_empleado">Crear Empleado</a></li>
+    <li class="col-2"><a href="/modificar_empleado">Modificar Empleados</a></li>
+    <li class="col-2"><a href="/"> Cerrar Sesion</a></li>
+  </ul>
+
+
+  <div class="login">
+    <div class="login-header">
+      <h1>Modificar Producto</h1>
+    </div>
+    <div class="login-form">
+      <form action="/producto_modificado", method="GET">
+        <h3>Nombre del producto:</h3>
+      {{form.crsf_token}}
+      {{form.producto(class="mb-2",placeholder="Nombre")}}
+      {% for e in form.producto.errors %}
+      <div style="color: red;">{{e}}</div>
+      {% endfor %}
+      <br>
+      <h3>Categoria:</h3>
+      {{form.categoria(class="mb-2",placeholder="Categoria")}}
+      {% for e in form.producto.errors %}
+      <div style="color: red;">{{e}}</div>
+      {% endfor %}
+      <br>
+      <h3>Precio:</h3>
+      {{form.precio(class="mb-2",placeholder="Precio")}}
+      {% for e in form.producto.errors %}
+      <div style="color: red;">{{e}}</div>
+      {% endfor %}
+      <br>
+      <br>
+      {{form.actualizar(class="login-button")}}
+      <!-- <br> -->
+      <!-- <br> -->
+      {{form.borrar(class="login-button",type="reset")}}
+      </form>
+    </div>
+  </div>
+
+</body>
+
+</html>

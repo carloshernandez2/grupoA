@@ -16,6 +16,12 @@
   <!--Google Fonts-->
   <!-- <link href='//fonts.googleapis.com/css?family=Signika:400,600' rel='stylesheet' type='text/css'> -->
   <!--google fonts-->
+  <script>
+    function agregarRuta1(){
+      nombre = document.getElementById("nombre").value;
+      document.getElementById("Delete1").href = "/eliminar_empleado/" + nombre;
+    }
+  </script>  
 </head>
 
 <body>
@@ -65,7 +71,9 @@
       <!-- <br> -->
       <!-- <br> -->
       {{form.borrar(class="login-button",type="reset")}}
-
+      <br>
+      <br>
+      <a onmouseover="agregarRuta1()" href="/eliminar_empleado" id = "Delete1" >Eliminar</a>
      </form>
 
     </div>

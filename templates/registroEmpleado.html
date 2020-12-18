@@ -35,7 +35,7 @@
       <h1>Registrar Empleado</h1>
     </div>
     <div class="login-form">
-     <form action="/empleado_registrado">
+     <form action="/empleado_registrado" method="POST">
       <h3>Nombre del Empleado:</h3>
       {{form.crsf_token}}
       {{form.nombre(class="mb-2",placeholder="Nombre")}}
@@ -85,7 +85,7 @@
         
         {% for e in empleados%}
         <tr>
-          <td> <a href="/modificar_empleado">{{e['id']}}</a></td>
+          <td> <a href="/modificar_empleado">{{e['id_usuario']}}</a></td>
           <td> {{e['nombre']}} </td>
           <td> {{e['cedula']}} </td>
           <td> {{e['correo']}} </td>

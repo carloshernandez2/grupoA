@@ -94,14 +94,14 @@ def escribir():
 
 @app.route("/inicio/admin_autorizado", methods=["POST","GET"])
 def inicio_admin():
-    if "usuario" in session and session['usuario'] == "admin":
+    if "cargo" in session and session['cargo'] == "admin":
         return render_template("inicioAdministrador.html")
     else:
         return "Usuario no autorizado."
 
 @app.route("/registrar_producto", methods=["POST","GET"])
 def registrar_producto():
-    if "usuario" in session and session['usuario'] == "admin":
+    if "cargo" in session and session['cargo'] == "admin":
         form = RegistroProducto()
         with sqlite3.connect("cafeteria1.db") as con:
             con.row_factory = sqlite3.Row
@@ -114,7 +114,7 @@ def registrar_producto():
 
 @app.route("/producto_registrado", methods=["POST","GET"])
 def producto_registrado():
-    if "usuario" in session and session['usuario'] == "admin":
+    if "cargo" in session and session['cargo'] == "admin":
         nombre = escape(request.form["producto"])
         cantidad = escape(request.form["cantidad"])
         categoria = escape(request.form["categoria"])
@@ -138,7 +138,7 @@ def producto_registrado():
 
 @app.route("/modificar_producto", methods=["POST","GET"])
 def modificar_producto():
-    if "usuario" in session  and session['usuario'] == "admin":
+    if "cargo" in session and session['cargo'] == "admin":
         form = ModificarProducto()
         return render_template("modificarProducto.html",form = form)
     else:
@@ -146,7 +146,7 @@ def modificar_producto():
 
 @app.route("/producto_modificado", methods=["POST","GET"])
 def producto_modificado():
-    if "usuario" in session  and session['usuario'] == "admin":
+    if "cargo" in session and session['cargo'] == "admin":
         # Aqui para UPDATE
         form = ModificarProducto()
         nombre = escape(form.producto.data)
@@ -165,7 +165,7 @@ def producto_modificado():
 #esta lo va a mostrar en la tabla
 @app.route("/registrar_empleado", methods = ["POST","GET"])
 def registrar_empleado():
-    if "usuario" in session  and session['usuario'] == "admin":
+    if "cargo" in session and session['cargo'] == "admin":
         form = RegistroEmpleado()
         with sqlite3.connect("cafeteria1.db") as con:
             con.row_factory = sqlite3.Row
@@ -179,7 +179,7 @@ def registrar_empleado():
 # lo va a meter a la base de datos
 @app.route("/empleado_registrado", methods=["POST","GET"])
 def empleado_registrado():
-    if "usuario" in session  and session['usuario'] == "admin":
+    if "cargo" in session and session['cargo'] == "admin":
         form = RegistroEmpleado()
         nombre = escape(form.nombre.data)
         cla = escape(form.clave.data)
@@ -199,7 +199,7 @@ def empleado_registrado():
 
 @app.route("/modificar_empleado", methods=["POST","GET"])
 def modificar_empleado():
-    if "usuario" in session  and session['usuario'] == "admin":
+    if "cargo" in session and session['cargo'] == "admin":
         form = ModificarEmpleado()
         return render_template("modificarEmpleado.html",form = form)
     else:
@@ -207,7 +207,7 @@ def modificar_empleado():
 
 @app.route("/empleado_modificado", methods=["POST","GET"])
 def empleado_modificado():
-    if "usuario" in session  and session['usuario'] == "admin":
+    if "cargo" in session and session['cargo'] == "admin":
         #UPDATE
         form = ModificarEmpleado()
         nombre = escape(form.nombre.data)
@@ -228,7 +228,7 @@ def empleado_modificado():
 
 @app.route("/inicio/empleado_autorizado", methods=["POST","GET"])
 def inicio_empleado():
-    if "usuario" in session and session['usuario'] == "empleado":
+    if "cargo" in session and session['cargo'] == "empleado":
         with sqlite3.connect("cafeteria1.db") as con:
             con.row_factory = sqlite3.Row
             cur = con.cursor()
@@ -240,7 +240,7 @@ def inicio_empleado():
 
 @app.route("/modificar_cantidades",methods=["POST","GET"])
 def modificar_cantidades():
-    if "usuario" in session and session['usuario'] == "empleado":
+    if "cargo" in session and session['cargo'] == "empleado":
         form = ModificarCantidades()
         return render_template("modificarCantidades.html", form = form)
     else:
@@ -248,7 +248,7 @@ def modificar_cantidades():
 
 @app.route("/cantidad_modificada", methods=["POST","GET"])
 def cantidad_modificada():
-    if "usuario" in session and session['usuario'] == "empleado":
+    if "cargo" in session and session['cargo'] == "empleado":
         # update solo con cantidades
         form = ModificarCantidades()
         nombre = escape(form.nombre.data)
@@ -265,7 +265,7 @@ def cantidad_modificada():
 # ruta para borrar producto 
 @app.route("/eliminar_producto/<nombre>", methods =["POST","GET"])
 def eliminar_producto(nombre):
-    if "usuario" in session  and session['usuario'] == "admin":
+    if "cargo" in session and session['cargo'] == "admin":
         with sqlite3.connect("cafeteria1.db") as con:
             cur = con.cursor()
             cur.execute("DELETE FROM productos WHERE nombre = ?",[nombre])
@@ -277,7 +277,7 @@ def eliminar_producto(nombre):
 # ruta para borrar empleado
 @app.route("/eliminar_empleado/<nombre>", methods =["POST","GET"])
 def eliminar_empleado(nombre):
-    if "usuario" in session  and session['usuario'] == "admin":
+    if "cargo" in session and session['cargo'] == "admin":
         with sqlite3.connect("cafeteria1.db") as con:
             cur = con.cursor()
             cur.execute("DELETE FROM usuarios WHERE nombre = ?",[nombre])
@@ -287,4 +287,4 @@ def eliminar_empleado(nombre):
         return "Usuario no validado"
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True,host="0.0.0.0",port=80)
